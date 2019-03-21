@@ -25,4 +25,4 @@ app.post("/web/osu-submit.php", require("./handlers/osu_submit"));
 
 app.get("/web/osu-getscores.php", require("./handlers/osu_getscores"));
 
-app.listen(require("config.json").site.port);
+app.listen(require("./config.json").site.port);
