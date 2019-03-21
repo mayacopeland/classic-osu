@@ -5,7 +5,7 @@ async function handle(req, res) {
     res.end(scores);
 }
 async function getScores(req) {
-    let scores = await query("SELECT * FROM SCORES WHERE beatmap_md5 = ? AND passed = 1", req.query.c);
+    let scores = await query("SELECT * FROM SCORES WHERE beatmap_md5 = ? AND passed = 1 ORDER BY score DESC", req.query.c);
     let text = "";
     if (scores.length > 0) {
         let text = "";
