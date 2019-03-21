@@ -1,5 +1,5 @@
 # osu_2007
-Wanna know how osu! was back in 2007? Well now's your chance!
+Wanna know how osu! was back in 2007? Well now's your chance! (join the discord https://discord.gg/3aJF5Ef)
 ## Setting up
 ### Dependencies
 Node.js (tested on 10.x LTS)

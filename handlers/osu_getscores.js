@@ -24,7 +24,7 @@ async function getScores(req) {
             return text
         }
     } else {
-        return "-1"
+        return ""
     }
 }
 module.exports = handle;
