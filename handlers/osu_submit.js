@@ -27,6 +27,10 @@ async function handle(req, res) {
             return;
         }
         let userid = await query("SELECT * FROM users WHERE username = ? AND password = ?", score.username, score.password)
+        if (userid.length == 0) {
+            res.end("err: user not found");
+            return;
+        }
         userid = userid[0].id;
         let lastTopScore = await query("SELECT * from SCORES where beatmap_md5 = ? AND userid = ? AND passed = 1", score.mapMD5, score.userid);
         if (lastTopScore[0].score < score.score) {
