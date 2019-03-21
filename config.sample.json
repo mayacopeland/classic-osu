@@ -1,0 +1,11 @@
+{
+    "db": {
+        "username": "root",
+        "password": "",
+        "database": "osu",
+        "host": "localhost"
+    },
+    "site": {
+        "port": 80
+    }
+}
