@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
-const fileUpload = require('express-fileupload');
 const fs = require("fs");
 
 if (!fs.existsSync('./.data/')) fs.mkdirSync('./.data');
 if (!fs.existsSync('./.data/replays/')) fs.mkdirSync('./.data/replays');
 global.fileloc = "/.data/replays/"
-app.use(fileUpload());
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
