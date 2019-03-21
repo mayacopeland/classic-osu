@@ -28,14 +28,17 @@ async function handle(req, res) {
         }
         let userid = await query("SELECT * FROM users WHERE username = ? AND password = ?", score.username, score.password)
         userid = userid[0].id;
-        let lastTopScore = await query("SELECT * from SCORES where beatmap_md5 = ? AND userid = ? AND passed = 1", score.mapMD5, score.userid);
-        if (lastTopScore[0].score < score.score || lastTopScore == undefined) {
-            await query("UPDATE scores SET passed = 0 WHERE submit_hash = ?".lastTopScore[0].submitHash);
-        }
         await query("INSERT INTO scores(userid,submit_hash,beatmap_md5,count300,count100,count50,countGeki,countKatu,misses,score,maxcombo,perfect,mods,passed,rank) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", userid, score.submitHash, score.mapMD5, score.count300, score.count100, score.count50, score.countGeki, score.countKatu, score.countMiss, score.score, score.maxcombo, score.perfect, score.mods, score.passed, score.grade)
         await updateUserScore(userid);
         console.log("new score on " + score.mapMD5 + " by " + score.username);
-
+        try {
+            let lastTopScore = await query("SELECT * FROM scores WHERE beatmap_md5 = ? AND userid = ? AND passed = 1", score.mapMD5, score.userid);
+            if (lastTopScore[0].score < score.score) {
+                await query("UPDATE scores SET passed = 0 WHERE submit_hash = ?".lastTopScore[0].submitHash);
+            }
+        } catch {
+            // dont do anything
+        }
         res.end("ok");
     } catch {
         res.end("err");
