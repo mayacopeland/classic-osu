@@ -22,7 +22,7 @@ async function handle(req, res) {
     let score = new scoreClass(scoreData, passwordMD5, passed, perfect);
     try {
         let scoreExists = await query("SELECT * FROM scores WHERE submit_hash = ?", score.submitHash);
-        if (!scoreExists) {
+        if (scoreExists) {
             res.end("err: score exists")
             return;
         }
