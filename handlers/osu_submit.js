@@ -40,7 +40,7 @@ async function handle(req, res) {
             if (lastTopScore[0].score < score.score) {
                 await query("UPDATE scores SET passed = 0 WHERE submit_hash = ?".lastTopScore[0].submitHash);
             }
-        } catch {
+        } catch(e) {
             // dont do anything
         }
         res.end("ok");
