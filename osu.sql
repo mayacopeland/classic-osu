@@ -69,13 +69,20 @@ CREATE TABLE `users` (
 -- Indexes for table `scores`
 --
 ALTER TABLE `scores`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD INDEX `userid` (`userid`),
+  ADD INDEX `score` (`score`),
+  ADD INDEX `passed` (`passed`),
+  ADD INDEX `score_hashes` (`submit_hash`, `beatmap_md5`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE INDEX `username` (`username`),
+  ADD UNIQUE INDEX `email` (`email`),
+  ADD INDEX `score` (`score`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -93,6 +100,12 @@ ALTER TABLE `scores`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+--
+-- Table constraints
+--
+ALTER TABLE `scores`
+	ADD FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
