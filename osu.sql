@@ -81,13 +81,20 @@ CREATE TABLE `blog_posts` (
 -- Indexes for table `scores`
 --
 ALTER TABLE `scores`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD INDEX `userid` (`userid`),
+  ADD INDEX `score` (`score`),
+  ADD INDEX `passed` (`passed`),
+  ADD INDEX `score_hashes` (`submit_hash`, `beatmap_md5`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE INDEX `username` (`username`),
+  ADD UNIQUE INDEX `email` (`email`),
+  ADD INDEX `score` (`score`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -105,6 +112,23 @@ ALTER TABLE `scores`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_posts`
+--
+
+CREATE TABLE `blog_posts` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `blog_posts`
