@@ -1,0 +1,17 @@
+<div id="article">
+    <span class="subject">Player Ranking</span>
+    <b>Note: Your score/stats will be updated the next time you pass a song!</b>
+<center>
+
+<% if (leaderboard.length < 1) { %>
+    No one has registered on this osu-classic 2007 instance :()
+<% } %>
+</center>
+<div id="scorelist"><table border="0" cellpadding="0" cellspacing="0">
+        <tr><td class="head"><strong></strong></td><td class="head"><strong>Player</strong></td><td class="head">Accuracy</td><td class="head">Play Count</td><td class="head">Total Score</td><td class="head"><strong>Ranked Score</strong></td></tr>
+<% leaderboard.forEach(leaderboard => { %>
+    <tr class="odd" padding="0"><td><b></b></td><td><a href="/u/<%= leaderboard.id %>"><%= leaderboard.username %></a><a></a></td><td>0%</td><td>0</td><td><%= leaderboard.score %></td><td><b><%= leaderboard.score %></b></td></tr>
+<% }) %>
+</table>
+</div>
+

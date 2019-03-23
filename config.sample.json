@@ -6,6 +6,7 @@
         "host": "localhost"
     },
     "site": {
-        "port": 80
+        "port": 80,
+        "clientDownload": ""
     }
 }

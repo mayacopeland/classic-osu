@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require("fs");
+const path = require("path");
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 if (!fs.existsSync('./.data/')) fs.mkdirSync('./.data');
 if (!fs.existsSync('./.data/replays/')) fs.mkdirSync('./.data/replays');
@@ -13,9 +15,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    res.render("index")
-});
+app.get("/", require("./handlers/site_home"));
+app.get("/about", require("./handlers/site_about"));
+app.get("/download", require("./handlers/site_download"));
+app.get("/faq", require("./handlers/site_faq"));
+app.get("/leaderboard", require("./handlers/site_leaderboard"));
+app.get("/register", require("./handlers/site_register"));
 app.post("/register", require("./handlers/register"));
 
 // osu! connections

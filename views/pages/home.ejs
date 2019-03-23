@@ -1,0 +1,22 @@
+<% if (posts.length < 1) { %>
+    <div id="article">
+            <span class="subject">Welcome to osu-classic!</span>
+            <span class="byline">
+                <img height="32" width="32" src="/avatars/peppy.png" alt="" />
+                <a href="/u/peppy">peppy</a><br /><br />
+            </span>
+            <span class="message">Welcome to osu-classic. You are currently on the 2007 version of osu-classic, feel free to look about the site, it's the same as the way it was all the way back in 2007!<br>The client seen can be downloaded <a href="/download">here</a> and can do everything that the <br>2007 osu! client can.</span>
+            <span class="links"></span>
+        </div>
+<% } %>
+<% posts.forEach(post => { %>
+<div id="article">
+    <span class="subject"><%= post.title %></span>
+    <span class="byline">
+        <img height="32" width="32" src="/avatars/<%= post.userid %>" alt="" />
+        <a href="/u/<%= post.userid %>"><%= post.username %></a><br /><br />
+    </span>
+    <span class="message"><%= post.message %></span>
+    <span class="links"></span>
+</div>
+<% }) %>
