@@ -1,5 +1,6 @@
-# osu_2007
-Wanna know how osu! was back in 2007? Well now's your chance! (join the discord https://discord.gg/3aJF5Ef)
+# classic-osu
+## This project has died. PRs may be merged, I know this code is trash
+
 ## Setting up
 ### Dependencies
 Node.js (tested on 10.x LTS)
