@@ -1,8 +1,8 @@
-const { query } = require("../db");
+'use strict';
 
 async function handle(req, res) {
     console.log(req.query);
-    res.end()
+    res.end();
 }
 
 module.exports = handle;

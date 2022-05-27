@@ -1,3 +1,5 @@
+'use strict';
+
 const { query } = require("../db");
 
 async function handle(req, res) {
@@ -5,7 +7,6 @@ async function handle(req, res) {
     res.render("base", {
         page: "Homepage",
         posts: blogPosts
-
     })
 }
 

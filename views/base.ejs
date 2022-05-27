@@ -20,7 +20,6 @@
             <ul id="navlist">
                 <li id="active"><a href="/">News</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="https://discord.gg/3aJF5Ef">Discord</a></li>
                 <li><a href="/download">Download</a></li>
                 <li><a href="/faq">FAQ</a></li>
                 <li><a href="/leaderboard">Player Ranking</a></li>
@@ -33,26 +32,26 @@
         
         <div id="content">
             <% if (page == "Homepage") { %>
-                <% include pages/home.ejs %>
+                <%- include("pages/home.ejs") %>
             <% } %>
             <% if (page == "About") { %>
-                <% include pages/about.ejs %>
+                <%- include ("pages/about.ejs") %>
             <% } %>
             <% if (page == "Download") { %>
-                <% include pages/download.ejs %>
+                <%- include ("pages/download.ejs") %>
             <% } %>
             <% if (page == "FAQ") { %>
-                <% include pages/faq.ejs %>
+                <%- include ("pages/faq.ejs") %>
             <% } %>
             <% if (page == "Leaderboard") { %>
-                <% include pages/leaderboard.ejs %>
+                <%- include ("pages/leaderboard.ejs") %>
             <% } %>
             <% if (page == "Register") { %>
-                <% include pages/register.ejs %>
+                <%- include ("pages/register.ejs") %>
             <% } %>
         </div>
         
-        <span class="links">Made by <a href="https://ilyt.cc/">ilyt</a>.  &copy; peppy 2007</span></div>
+        <span class="links"><a href="https://github.com/mayacopeland/classic-osu">Source</a>.  &copy; peppy 2007</span></div>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-class score {
+class Score {
     constructor(scoreData, password, passed, perfect) {
         this.username = scoreData[1];
         this.password = password;
@@ -19,4 +19,4 @@ class score {
     }
 }
 
-module.exports = score;
+module.exports = Score;
